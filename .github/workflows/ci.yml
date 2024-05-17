@@ -32,7 +32,6 @@ jobs:
         uses: ncipollo/release-action@v1.14.0
         with:
           artifacts: "build/app/outputs/apk/release/*"
-          tag_name: ${{ env.VERSION }}
-          release_name: "Release ${{ env.VERSION }}"
+          tag: ${{ env.VERSION }}
           token: ${{ secrets.TOKEN }}
           
