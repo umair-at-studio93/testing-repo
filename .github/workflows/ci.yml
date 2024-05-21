@@ -28,11 +28,11 @@ jobs:
       - run: flutter pub get
       - run: flutter build apk
 
-      - name: Extract version from pubspec.yaml
-        id: extract_version
-        run: |
-          VERSION=$(sed -n 's/^version: //p' pubspec.yaml)
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
+      # - name: Extract version from pubspec.yaml
+      #   id: extract_version
+      #   run: |
+      #     VERSION=$(sed -n 's/^version: //p' pubspec.yaml)
+      #     echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       # - name: Create GitHub Release
       #   env:
