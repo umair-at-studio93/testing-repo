@@ -34,19 +34,19 @@ jobs:
           VERSION=$(sed -n 's/^version: //p' pubspec.yaml)
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
-      - name: Create GitHub Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        run: |
-          gh release create $VERSION \
-          --title "Release $VERSION" \
-          --notes "Release notes for version $VERSION" \
-          build/app/outputs/apk/release/*
+      # - name: Create GitHub Release
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      #   run: |
+      #     gh release create $VERSION \
+      #     --title "Release $VERSION" \
+      #     --notes "Release notes for version $VERSION" \
+      #     build/app/outputs/apk/release/*
 
-      # - name: Create Release
-      #   uses: ncipollo/release-action@v1.14.0
-      #   with:
-      #     artifacts: "build/app/outputs/apk/release/*"
-      #     tag: ${{ env.version }}
-      #     token: ${{ secrets.TOKEN }}
+      - name: Create Release
+        uses: ncipollo/release-action@v1.14.0
+        with:
+          artifacts: "build/app/outputs/apk/release/*"
+          tag: $VERSION - ${{ github.run_number }}
+          token: ${{ secrets.TOKEN }}
           
